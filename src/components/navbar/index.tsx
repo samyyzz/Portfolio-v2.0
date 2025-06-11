@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Container from "../Container";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { style } from "motion/react-client";
 
 export const Navbar = () => {
   const [hovered, setHovered] = useState<null | number>(null);
@@ -13,15 +14,40 @@ export const Navbar = () => {
     { title: "Contact", href: "/contact" },
     { title: "Projects", href: "/project" },
   ];
+  const { scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 20) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  });
   return (
     <Container>
-      <nav className="flex items-center justify-between p-2">
+      <motion.nav
+        style={{borderRadius: 0}}
+        animate={{
+          boxShadow: scrolled ? "var(--shadow-navShadow)" : "none",
+          width: scrolled ? "50%" : "100%",
+          y: scrolled ? 10 : 0,
+          borderRadius: 30,
+        }}
+        transition={{
+          ease: "easeIn",
+          duration: "0.3",
+          type: "spring",
+          stiffness: 100,
+        }}
+        className="fixed inset-x-0 top-0 mx-auto flex max-w-4xl items-center justify-between bg-neutral-900 px-4 py-2"
+      >
         <Image
           src={"/samx-gtihub.png.webp"}
           width={100}
           height={100}
           alt="img"
-          className="h-10 w-9 rounded-full"
+          className="h-9 w-8 rounded-full"
         />
         <div className="flex items-center justify-center">
           {navItems.map((link, idx) => (
@@ -36,7 +62,6 @@ export const Navbar = () => {
                 <motion.span
                   layoutId="hovered-span"
                   className="bg-secondary absolute inset-0 h-full w-full rounded-md"
-                  // transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 />
               )}
@@ -48,7 +73,7 @@ export const Navbar = () => {
             </Link>
           ))}
         </div>
-      </nav>
+      </motion.nav>
     </Container>
   );
 };

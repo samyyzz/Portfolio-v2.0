@@ -5,7 +5,10 @@
  --color-primary : var(--color-neutral-800);
  --color-secondary : var(--color-neutral-100);
  --color-para : var(--color-neutral-500);
+
+ --shadow-navShadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
