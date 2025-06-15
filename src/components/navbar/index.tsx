@@ -4,8 +4,12 @@ import React, { useState } from "react";
 import Container from "../Container";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
-import { style } from "motion/react-client";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "motion/react";
 
 export const Navbar = () => {
   const [hovered, setHovered] = useState<null | number>(null);
@@ -17,6 +21,9 @@ export const Navbar = () => {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState<boolean>(false);
 
+  // const y = useTransform(scrollY, [0, 100], ["0,10"]);
+  // const width = useTransform(scrollY, [0, 100], ["50%,10"]);
+  // const opacity = useTransform(scrollY, [0, 100], []);
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 20) {
       setScrolled(true);
@@ -27,7 +34,7 @@ export const Navbar = () => {
   return (
     <Container>
       <motion.nav
-        style={{borderRadius: 0}}
+        style={{ borderRadius: 0 }}
         animate={{
           boxShadow: scrolled ? "var(--shadow-navShadow)" : "none",
           width: scrolled ? "50%" : "100%",
@@ -40,15 +47,18 @@ export const Navbar = () => {
           type: "spring",
           stiffness: 100,
         }}
-        className="fixed inset-x-0 top-0 mx-auto flex max-w-4xl items-center justify-between bg-neutral-900 px-4 py-2"
+        className={`fixed inset-x-0 top-0 z-50 mx-auto flex max-w-7xl items-center justify-between ${scrolled && "bg-neutral-800"} px-4 py-2`}
       >
-        <Image
-          src={"/samx-gtihub.png.webp"}
-          width={100}
-          height={100}
-          alt="img"
-          className="h-9 w-8 rounded-full"
-        />
+        <div className={`${!scrolled && `rounded-lg bg-neutral-700 p-2`}`}>
+          <Image
+            // src={"/samx-gtihub.png.webp"}
+            src={"/picofme (2).png"}
+            width={100}
+            height={100}
+            alt="img"
+            className="size-7 rounded-full object-bottom"
+          />
+        </div>
         <div className="flex items-center justify-center">
           {navItems.map((link, idx) => (
             <Link

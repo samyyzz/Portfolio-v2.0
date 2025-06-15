@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Freelancer Portfolio Website Template - Sameer UI Pro",
+  title: "Sam",
   description:
     "A perfect portfolio website template that showcases your skills, minimal and smooth micro-interactions, perfect for developers and designers.",
 };
