@@ -6,59 +6,81 @@ import Image from "next/image";
 import { easeInOut, motion } from "motion/react";
 import { delay } from "motion";
 import Link from "next/link";
+import { ProjectCard } from "./ProjectCard";
+
+export interface Project {
+  imageSrc: string;
+  tags: string[];
+  title: string;
+  description: string;
+  href: string;
+  idx?: number;
+}
+
+export const projectList: Project[] = [
+  {
+    imageSrc:
+      "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Productivity", "Productivity", "Productivity"],
+    title: "Thid Pad",
+    description:
+      "A sleek and intuitive note-taking application designed for seamless cross-device synchronization.",
+    href: "#",
+  },
+  {
+    imageSrc:
+      "https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Automation", "Automation", "Automation"],
+    title: "Zapier",
+    description:
+      "Connects your apps and automates workflows, moving information between your web services automatically.",
+    href: "#",
+  },
+  {
+    imageSrc:
+      "https://images.pexels.com/photos/32508321/pexels-photo-32508321/free-photo-of-sunset-over-amsterdam-canals-with-tour-boats.jpeg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Scheduling", "Scheduling", "Scheduling"],
+    title: "Appointmate",
+    description:
+      "Revolutionizing appointment booking with smart scheduling and client management features.",
+    href: "#",
+  },
+  {
+    imageSrc:
+      "https://images.pexels.com/photos/21787/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600",
+    tags: ["Community", "Community", "Community"],
+    title: "Gather.City",
+    description:
+      "A vibrant online platform for local communities to connect, share events, and engage with neighbors.",
+    href: "#",
+  },
+];
 
 export const Projects = () => {
   return (
     <Container>
       <div className="pt-10">
-        <p className="text-secondary md:text-md max-w-lg pt-4 text-sm">
-          Here are some of our projects :
-        </p>
+        <div className="mb-10 flex w-full flex-col items-center justify-center gap-4">
+          <h1 className="text-primary bg-lime-300 px-4 py-2 pt-4 text-center text-sm font-extrabold md:text-5xl">
+            A glimpse into the{" "}
+            <span className="gradient-title from-blue-500 to-blue-700">
+              Websites
+            </span>{" "}
+            that I have built.
+          </h1>
+          <p className="text-para w-6/8 text-center text-lg underline underline-offset-8">
+            Here are some of the MVPs I've helped founders launch. They all had
+            innovative ideas and I helped them convert them into reality.
+          </p>
+        </div>
       </div>
-      <div className="grid grid-cols-1 gap-4 py-4 md:grid-cols-2">
-        {projectList.map((proj, idx) => (
-          <motion.div
-            key={proj.title}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{duration: "0.3", delay: idx * 0.1, ease: "easeInOut" }}
-            className="group"
-          >
-            <Link href={proj.href}/>
-            <Image
-              src={proj.src}
-              width={400}
-              height={400}
-              alt="Project-Image"
-              className="group-hover:scale-[1.02] transition duration-200 h-72 w-full rounded-md"
-            />
-            <h1 className="font-bold tracking-tight text-secondary pt-2 pb-3">{proj.title}</h1>
-          </motion.div>
-        ))}
+      <div className="flex items-center justify-center">
+        <div className="grid w-fit grid-cols-1 justify-items-center gap-8 py-4 md:grid-cols-2">
+          {projectList.map((proj, idx) => (
+            <ProjectCard key={idx} {...proj} idx={idx} />
+          ))}
+        </div>
       </div>
     </Container>
   );
 };
-
-const projectList = [
-  {
-    title: "Thid Pad",
-    src: "https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg?auto=compress&cs=tinysrgb&w=600",
-    href: "#",
-  },
-  {
-    title: "Zapier",
-    src: "https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=600",
-    href: "#",
-  },
-  {
-    title: "Appointmate",
-    src: "https://images.pexels.com/photos/32508321/pexels-photo-32508321/free-photo-of-sunset-over-amsterdam-canals-with-tour-boats.jpeg?auto=compress&cs=tinysrgb&w=600",
-    href: "#",
-  },
-  {
-    title: "Gather.City",
-    src: "https://images.pexels.com/photos/21787/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600",
-    href: "#",
-  },
-];

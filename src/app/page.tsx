@@ -2,6 +2,8 @@ import { BuildUp } from "@/components/buildup/BuildUp";
 import Container from "@/components/Container";
 import { Intro } from "@/components/Intro";
 import { Offerings } from "@/components/offerings";
+import { Projects } from "@/components/projects";
+import { Testimonial } from "@/components/testimonials";
 import Image from "next/image";
 
 const rolesList = ["Designer /", "Developer /", "Editor"];
@@ -17,6 +19,20 @@ export default function Home() {
         />
         <BuildUp />
         <Offerings />
+        {/* <Image
+          src={"/banner.png"}
+          width={1250}
+          height={100}
+          alt="Banner"
+          className="rounded-4xl"
+        /> */}
+        <Testimonial/>
+        <Projects/>
+        {/* <Workflow/> */}
+        {/* <Price/> */}
+        {/* <FAQ/> */}
+        {/* <Footbar/> */}
+        {/* <Footer> */}
       </Container>
     </div>
   );
