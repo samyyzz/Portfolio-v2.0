@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Container from "../Container";
 import Image from "next/image";
 import { easeInOut, motion } from "motion/react";
@@ -57,16 +57,23 @@ export const projectList: Project[] = [
 ];
 
 export const Projects = () => {
+
+    // const [currentPage, setCurrentPage] = useState<number>(1)
+    // const itemsPerPage = 3
+
+    // const indexOfLastItem = currentPage * itemsPerPage
+    // const indexOfFirstItem = indexOfLastItem - itemsPerPage
+    // const currentFaqz = projectList.slice(indexOfFirstItem, indexOfLastItem)
+
   return (
     <Container>
       <div className="pt-10">
-        <div className="mb-10 flex w-full flex-col items-center justify-center gap-4">
+        <div className="mb-10 flex w-full flex-col items-center justify-center gap-4 ">
           <h1 className="text-primary bg-lime-300 px-4 py-2 pt-4 text-center text-sm font-extrabold md:text-5xl">
-            A glimpse into the{" "}
-            <span className="gradient-title from-blue-500 to-blue-700">
-              Websites
-            </span>{" "}
-            that I have built.
+            A glimpse into the
+            {/* <span className="gradient-title from-blue-500 to-blue-700"> */}
+            <span className="bg-white p-2 text-black">Websites</span> that I
+            have built.
           </h1>
           <p className="text-para w-6/8 text-center text-lg underline underline-offset-8">
             Here are some of the MVPs I've helped founders launch. They all had
@@ -84,3 +91,5 @@ export const Projects = () => {
     </Container>
   );
 };
+
+

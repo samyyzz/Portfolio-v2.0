@@ -68,7 +68,7 @@ export const testimonials: TestimonialCard[] = [
 export const Testimonial = () => {
   return (
     <Container>
-      <div className="my-10 flex flex-col gap-10">
+      <div className="mt-10 flex flex-col gap-10">
         <div className="flex flex-col items-center justify-center gap-3">
           <h1 className="gradient-title from-neutral-100 to-neutral-500 text-6xl font-extrabold">
             Trusted by Founders

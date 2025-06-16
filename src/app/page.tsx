@@ -1,9 +1,13 @@
+"use client"
+
 import { BuildUp } from "@/components/buildup/BuildUp";
 import Container from "@/components/Container";
+import { FAQ } from "@/components/faq";
 import { Intro } from "@/components/Intro";
 import { Offerings } from "@/components/offerings";
 import { Projects } from "@/components/projects";
 import { Testimonial } from "@/components/testimonials";
+import { Workflow } from "@/components/workflow";
 import Image from "next/image";
 
 const rolesList = ["Designer /", "Developer /", "Editor"];
@@ -28,9 +32,9 @@ export default function Home() {
         /> */}
         <Testimonial/>
         <Projects/>
-        {/* <Workflow/> */}
+        <Workflow/>
         {/* <Price/> */}
-        {/* <FAQ/> */}
+        <FAQ/>
         {/* <Footbar/> */}
         {/* <Footer> */}
       </Container>
