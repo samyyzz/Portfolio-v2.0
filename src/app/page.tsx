@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
 import { BuildUp } from "@/components/buildup/BuildUp";
 import Container from "@/components/Container";
 import { FAQ } from "@/components/faq";
+import { Footer } from "@/components/footer";
 import { Intro } from "@/components/Intro";
 import { Offerings } from "@/components/offerings";
 import { Projects } from "@/components/projects";
@@ -14,7 +15,7 @@ const rolesList = ["Designer /", "Developer /", "Editor"];
 
 export default function Home() {
   return (
-    <div className="flex items-start justify-center">
+    <div className="flex flex-col items-start justify-center">
       <Container className="flex min-h-screen flex-col gap-20 p-4 md:pt-20 md:pb-10">
         <Intro
           name="Sameer Ranjan Singh"
@@ -23,21 +24,21 @@ export default function Home() {
         />
         <BuildUp />
         <Offerings />
-        {/* <Image
-          src={"/banner.png"}
-          width={1250}
-          height={100}
-          alt="Banner"
-          className="rounded-4xl"
-        /> */}
-        <Testimonial/>
-        <Projects/>
-        <Workflow/>
+        <Testimonial />
+        <Projects />
+        <Workflow />
         {/* <Price/> */}
-        <FAQ/>
-        {/* <Footbar/> */}
-        {/* <Footer> */}
+        <FAQ />
       </Container>
+      <Footer />
     </div>
   );
 }
+
+{/* <Image
+  src={"/banner.png"}
+  width={1250}
+  height={100}
+  alt="Banner"
+  className="rounded-4xl"
+/>; */}

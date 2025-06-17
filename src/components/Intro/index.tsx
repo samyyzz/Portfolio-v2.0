@@ -18,7 +18,7 @@ export const Intro = ({ imageSrc, name, aboutMe }: IntroTemplate) => {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="from-secondary z-10 -mt-10 scale-104 bg-gradient-to-b to-blue-100 bg-clip-text text-8xl font-extrabold text-transparent uppercase">
+        <h1 className="from-secondary z-10 -mt-10 scale-104 bg-gradient-to-b to-blue-100 bg-clip-text text-8xl font-extrabold text-transparent capitalize">
           {name}
         </h1>
         <div className="mt-2 flex w-full justify-between text-start">
