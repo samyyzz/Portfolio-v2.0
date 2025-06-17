@@ -5,7 +5,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <div className="flex w-full flex-col items-start justify-between gap-10 bg-black p-20 pb-0">
+    <div id="footer" className="flex w-full flex-col items-start justify-between gap-10 bg-black p-20 pb-0">
       <div className="flex w-full justify-between">
         <div className="flex flex-col gap-4">
           <h1 className="gradient-title w-96 from-lime-400 to-lime-800 text-6xl font-extrabold">

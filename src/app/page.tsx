@@ -15,8 +15,9 @@ const rolesList = ["Designer /", "Developer /", "Editor"];
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-start justify-center">
-      <Container className="flex min-h-screen flex-col gap-20 p-4 md:pt-20 md:pb-10">
+    <div>
+      {/* <Container className="flex min-h-screen flex-col gap-20 p-4 md:pt-20 md:pb-10"> */}
+      <Container className="flex min-h-screen flex-col gap-20 p-4 ">
         <Intro
           name="Sameer Ranjan Singh"
           aboutMe={rolesList}

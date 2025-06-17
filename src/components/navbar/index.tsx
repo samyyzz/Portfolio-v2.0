@@ -14,9 +14,9 @@ import {
 export const Navbar = () => {
   const [hovered, setHovered] = useState<null | number>(null);
   const navItems = [
-    { title: "About", href: "/about" },
-    { title: "Contact", href: "/contact" },
-    { title: "Projects", href: "/project" },
+    { title: "About", href: "offerings" },
+    { title: "Contact", href: "footer" },
+    { title: "Projects", href: "projects" },
   ];
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -62,7 +62,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-center">
           {navItems.map((link, idx) => (
             <Link
-              href={link.href}
+              href={"#" + link.href}
               key={link.title}
               onMouseEnter={() => setHovered(idx)}
               onMouseLeave={() => setHovered(null)}

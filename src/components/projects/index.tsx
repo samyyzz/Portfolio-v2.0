@@ -67,7 +67,7 @@ export const Projects = () => {
 
   return (
     <Container>
-      <div className="pt-10">
+      <div id="projects">
         <div className="mb-10 flex w-full flex-col items-center justify-center gap-4 ">
           <h1 className="text-primary bg-lime-300 px-4 py-2 pt-4 text-center text-sm font-extrabold md:text-5xl">
             A glimpse into the
