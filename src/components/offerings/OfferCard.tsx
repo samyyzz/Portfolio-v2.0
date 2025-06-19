@@ -1,6 +1,8 @@
+import { AnimationProps } from "motion/react";
 import Image from "next/image";
 
 export interface CardList {
+  idx?:number;
   iconSrc: string;
   title: string;
   description: string;

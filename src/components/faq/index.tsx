@@ -2,6 +2,7 @@
 import React from "react";
 import Container from "../Container";
 import { FaqCard } from "./FaqCard";
+import { motion } from "motion/react";
 
 export interface FAQItem {
   qus: string;
@@ -52,26 +53,51 @@ export const faqList: FAQItem[] = [
 ];
 
 export const FAQ = () => {
-
   return (
     <Container>
       <div className="mb-10 flex flex-col items-center justify-start">
-        <h1 className="gradient-title w-full from-neutral-100 to-neutral-500 text-start text-6xl font-extrabold">
+        <motion.h1
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          whileInView={{ opacity: 100, filter: "blur(0px)" }}
+          className="gradient-title w-full from-neutral-100 to-neutral-500 text-start text-6xl font-extrabold"
+        >
           FAQ
-        </h1>
-        <p className="text-secondary w-full text-start text-sm font-semibold">
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, filter: "blur(10px)", scale: 0 }}
+          whileInView={{ opacity: 100, filter: "blur(0px)", scale: 1 }}
+          className="text-secondary w-full text-start text-sm font-semibold"
+        >
           # We are here to help you with your doubts.
-        </p>
+        </motion.p>
       </div>
-      <div className="flex flex-col gap-2">
+      <motion.div
+       className="flex flex-col gap-2">
         {faqList.map((faq, idx) => (
-          <FaqCard
-            qus={faq.qus}
-            ans={faq.ans}
+          <motion.div
             key={idx}
-          />
+            initial={{
+              opacity: 0,
+              y: 60,
+              z: 60,
+              x: -100,
+              rotateX: 100,
+              rotateY: 10,
+            }}
+            whileInView={{
+              opacity: 100,
+              y: 0,
+              z: 0,
+              x: 0,
+              rotateX: 0,
+              rotateY: 0,
+            }}
+            transition={{ duration: 0.5, ease: "easeInOut", delayChildren:0.7 }}
+          >
+            <FaqCard qus={faq.qus} ans={faq.ans} key={idx} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </Container>
   );
 };

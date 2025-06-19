@@ -55,16 +55,16 @@ export const Footer = () => {
       </div>
       <hr className="h-0.5 w-full bg-neutral-800" />
       <div className="mb-10 flex h-0.5 w-full justify-center gap-10">
-        <p className="flex items-center justify-center pl-2 text-lg font-bold text-red-200">
+        <p className="flex items-center justify-center pl-2 text-md font-bold text-neutral-400">
           Design and Built by
           <Link href={"https://x.com/samXyyzz"} target="_blank">
-            <span className="ml-2 flex animate-pulse cursor-pointer gap-2 rounded-r-4xl bg-red-600 px-2 py-1 text-2xl font-bold text-neutral-900">
+            <span className="ml-2 flex animate-pulse cursor-pointer gap-2 rounded-r-4xl bg-red-600 px-2 py-1 text-lg font-bold text-neutral-900">
               <Image
                 src={"/x.svg"}
                 width={0}
                 height={0}
                 alt="X"
-                className="size-8 cursor-pointer rounded-full"
+                className="size-6 mt-0.5 cursor-pointer rounded-full"
               />
               Sameer
             </span>

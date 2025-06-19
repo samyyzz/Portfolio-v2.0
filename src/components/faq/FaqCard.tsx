@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { FAQItem } from ".";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  subsets: ["cyrillic"],
+  weight: ["400", "700", "900"],
+});
 
 export const FaqCard = ({ qus, ans }: FAQItem) => {
   const [showAns, setShowAns] = useState<boolean>(false);
@@ -11,7 +18,10 @@ export const FaqCard = ({ qus, ans }: FAQItem) => {
   };
 
   return (
-    <div onClick={handleCardClick} className="flex cursor-pointer flex-col">
+    <div
+      onClick={handleCardClick}
+      className="flex cursor-pointer flex-col select-none"
+    >
       <div className="flex items-center justify-between bg-neutral-800 p-5">
         <h1
           className={`text-lg font-bold hover:text-neutral-200 ${showAns ? `text-neutral-200` : `text-neutral-400`}`}
@@ -24,9 +34,21 @@ export const FaqCard = ({ qus, ans }: FAQItem) => {
           <ChevronDown className="text-neutral-400" />
         )}
       </div>
-      {showAns && (
-        <p className="bg-neutral-800 p-5 pt-0 text-neutral-500">{ans}</p>
-      )}
+      <AnimatePresence>
+        {showAns && (
+          <motion.p
+            initial={{ y: -20 }}
+            whileInView={{ y: 0 }}
+            exit={{ y: 0 }}
+            transition={{
+              duration: 0.3,
+            }}
+            className={`${roboto.className} bg-neutral-800 p-5 pt-0 text-neutral-500`}
+          >
+            {ans}
+          </motion.p>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

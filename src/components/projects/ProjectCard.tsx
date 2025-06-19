@@ -3,6 +3,12 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Project } from ".";
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  subsets: ["cyrillic"],
+  weight: ["400", "700", "900"],
+});
 
 export const ProjectCard = ({
   imageSrc,
@@ -25,7 +31,6 @@ export const ProjectCard = ({
       className="group"
     >
       <Link href={href} />
-      {/* <div className="group-hover:scale-[1.02] w-fit"> */}
       <Image
         src={imageSrc}
         width={550}
@@ -42,9 +47,8 @@ export const ProjectCard = ({
         <h1 className="text-secondary ml-2 pt-2 pb-3 text-xl font-bold tracking-tight">
           {title}
         </h1>
-        <p className="text-neutral-400">{description}</p>
+        <p className={`${roboto.className} text-neutral-400`}>{description}</p>
       </div>
-      {/* </div> */}
     </motion.div>
   );
 };

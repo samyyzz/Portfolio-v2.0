@@ -2,6 +2,12 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 import { TestimonialCard } from "./TestimonialCard";
 import Container from "../Container";
+import { motion } from "motion/react";
+import localFont from "next/font/local";
+
+const localfont = localFont({
+  src: "../../../public/fonts/LarkenDEMO-Bold.otf",
+});
 
 export const testimonials: TestimonialCard[] = [
   {
@@ -70,13 +76,31 @@ export const Testimonial = () => {
     <Container>
       <div className="flex flex-col gap-10">
         <div className="flex flex-col items-center justify-center gap-3">
-          <h1 className="gradient-title from-neutral-100 to-neutral-500 text-6xl font-extrabold">
+          <motion.h1
+            initial={{ x: -500, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 100 }}
+            transition={{
+              duration: 0.3,
+              type: "spring",
+              bounce: 2,
+              damping: 10,
+              mass: 1,
+            }}
+            className={`gradient-title from-neutral-100 to-neutral-500 text-6xl font-extrabold ${localfont.className}`}
+          >
             Trusted by Founders
-          </h1>
-          <p className="text-secondary text-sm font-semibold">
+          </motion.h1>
+          <motion.p
+            initial={{ filter: "blur(10px)", opacity: 0 }}
+            whileInView={{ filter: "blur(0px)", opacity: 100 }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="text-secondary text-sm font-semibold"
+          >
             Hear from clients and collaborators about their experience working
             with us.
-          </p>
+          </motion.p>
         </div>
         <div className="flex mask-x-from-70% mask-x-to-90%">
           <Marquee pauseOnHover>
