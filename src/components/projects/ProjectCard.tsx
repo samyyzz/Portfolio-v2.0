@@ -1,5 +1,11 @@
-import React from "react";
-import { motion } from "motion/react";
+import React, { useRef } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Project } from ".";
@@ -18,8 +24,34 @@ export const ProjectCard = ({
   href,
   idx,
 }: Project) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const translateY = useSpring(
+    useTransform(scrollYProgress, [0, 1], [300, -300]),
+    {
+      stiffness: 100,
+      damping: 30,
+      mass: 1,
+    },
+  );
+  const blur = useTransform(scrollYProgress, [0.5, 1], [0, 10]);
+  const scaleContent = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [0.2, 1, 0.8],
+  );
+  const opacityContent = useTransform(
+    scrollYProgress,
+    [0, 0.7, 1],
+    [0.2, 1, 0.6],
+  );
   return (
     <motion.div
+      ref={containerRef}
       key={title}
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -28,27 +60,40 @@ export const ProjectCard = ({
         delay: parseInt(`${idx && idx * 0.1}`),
         ease: "easeInOut",
       }}
-      className="group"
+      className="group flex"
     >
       <Link href={href} />
-      <Image
-        src={imageSrc}
-        width={550}
-        height={300}
-        alt="Project-Image"
-        className="h-80 rounded-t-4xl transition duration-200 group-hover:scale-[1.02]"
-      />
-      <div className="flex h-72 flex-col gap-3 rounded-b-4xl bg-neutral-800 p-8 md:w-[550px]">
+      <div className="flex flex-col items-start justify-center gap-3 bg-neutral-800 p-8 md:min-h-96 md:min-w-2xl">
+        <h1 className="text-secondary ml-2 pt-2 pb-3 text-xl font-bold tracking-tight">
+          {title}
+        </h1>
         <div className="flex gap-2">
           {tags.map((tag, idx) => (
             <Tag key={idx} name={tag} />
           ))}
         </div>
-        <h1 className="text-secondary ml-2 pt-2 pb-3 text-xl font-bold tracking-tight">
-          {title}
-        </h1>
-        <p className={`${roboto.className} text-neutral-400`}>{description}</p>
+        <p className={`${roboto.className} text-neutral-400 md:max-w-lg`}>
+          {description}
+        </p>
       </div>
+      <motion.div
+        style={{
+          y: translateY,
+          scale: scaleContent,
+          filter: useMotionTemplate`blur(${blur}px)`,
+          x: -70,
+          opacity: opacityContent,
+        }}
+        className="flex items-center justify-start md:min-h-96"
+      >
+        <Image
+          src={imageSrc}
+          width={400}
+          height={400}
+          alt="Project-Image"
+          className="rounded-2xl transition duration-200 group-hover:scale-[1.05]"
+        />
+      </motion.div>
     </motion.div>
   );
 };

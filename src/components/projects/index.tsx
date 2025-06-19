@@ -59,31 +59,25 @@ const roboto = Roboto({
 });
 
 export const Projects = () => {
-
-    // const [currentPage, setCurrentPage] = useState<number>(1)
-    // const itemsPerPage = 3
-
-    // const indexOfLastItem = currentPage * itemsPerPage
-    // const indexOfFirstItem = indexOfLastItem - itemsPerPage
-    // const currentFaqz = projectList.slice(indexOfFirstItem, indexOfLastItem)
-
   return (
     <Container>
       <div id="projects">
-        <div className="mb-10 flex w-full flex-col items-center justify-center gap-4 ">
+        <div className="mb-10 flex w-full flex-col items-center justify-center gap-4">
           <h1 className="text-primary bg-lime-300 px-4 py-2 pt-4 text-center text-sm font-extrabold md:text-5xl">
             A glimpse into the
             <span className="bg-white p-2 text-black">Websites</span> that I
             have built.
           </h1>
-          <p className={`${roboto.className} text-para w-6/8 text-center text-lg underline underline-offset-8`}>
+          <p
+            className={`${roboto.className} text-para w-6/8 text-center text-lg underline underline-offset-8`}
+          >
             Here are some of the MVPs I've helped founders launch. They all had
             innovative ideas and I helped them convert them into reality.
           </p>
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <div className="grid w-fit grid-cols-1 justify-items-center gap-8 py-4 md:grid-cols-2">
+        <div className="flex w-full flex-col items-center justify-center gap-8 py-4">
           {projectList.map((proj, idx) => (
             <ProjectCard key={idx} {...proj} idx={idx} />
           ))}
@@ -92,5 +86,3 @@ export const Projects = () => {
     </Container>
   );
 };
-
-
