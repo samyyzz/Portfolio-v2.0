@@ -64,7 +64,7 @@ export const ProjectCard = ({
     >
       <Link href={href} />
       <div className="flex flex-col items-start justify-center gap-3 bg-neutral-800 p-8 md:min-h-96 md:min-w-2xl">
-        <h1 className="text-secondary ml-2 pt-2 pb-3 text-xl font-bold tracking-tight">
+        <h1 className="text-secondary text-md ml-2 pt-2 pb-3 font-bold tracking-tight md:text-xl">
           {title}
         </h1>
         <div className="flex gap-2">
@@ -72,7 +72,9 @@ export const ProjectCard = ({
             <Tag key={idx} name={tag} />
           ))}
         </div>
-        <p className={`${roboto.className} text-neutral-400 md:max-w-lg`}>
+        <p
+          className={`${roboto.className} md:text-md text-para text-sm md:max-w-lg`}
+        >
           {description}
         </p>
       </div>

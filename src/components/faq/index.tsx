@@ -59,20 +59,19 @@ export const FAQ = () => {
         <motion.h1
           initial={{ opacity: 0, filter: "blur(10px)" }}
           whileInView={{ opacity: 100, filter: "blur(0px)" }}
-          className="gradient-title w-full from-neutral-100 to-neutral-500 text-start text-6xl font-extrabold"
+          className="gradient-title w-full from-neutral-100 to-neutral-500 text-start text-4xl font-extrabold md:text-6xl"
         >
           FAQ
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, filter: "blur(10px)", scale: 0 }}
           whileInView={{ opacity: 100, filter: "blur(0px)", scale: 1 }}
-          className="text-secondary w-full text-start text-sm font-semibold"
+          className="text-para w-full text-start text-sm font-semibold"
         >
           # We are here to help you with your doubts.
         </motion.p>
       </div>
-      <motion.div
-       className="flex flex-col gap-2">
+      <motion.div className="flex flex-col gap-2">
         {faqList.map((faq, idx) => (
           <motion.div
             key={idx}
@@ -92,7 +91,11 @@ export const FAQ = () => {
               rotateX: 0,
               rotateY: 0,
             }}
-            transition={{ duration: 0.5, ease: "easeInOut", delayChildren:0.7 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeInOut",
+              delayChildren: 0.7,
+            }}
           >
             <FaqCard qus={faq.qus} ans={faq.ans} key={idx} />
           </motion.div>

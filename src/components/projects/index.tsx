@@ -63,13 +63,13 @@ export const Projects = () => {
     <Container>
       <div id="projects">
         <div className="mb-10 flex w-full flex-col items-center justify-center gap-4">
-          <h1 className="text-primary bg-lime-300 px-4 py-2 pt-4 text-center text-sm font-extrabold md:text-5xl">
+          <h1 className="text-primary w-full bg-gradient-to-br from-lime-400 to-lime-700 px-4 py-2 pt-4 text-center text-sm/6 font-extrabold md:text-5xl">
             A glimpse into the
-            <span className="bg-white p-2 text-black">Websites</span> that I
-            have built.
+            <span className="bg-white p-2 text-black uppercase">Websites</span>
+            <span className="block md:inline-block">that I have built.</span>
           </h1>
           <p
-            className={`${roboto.className} text-para w-6/8 text-center text-lg underline underline-offset-8`}
+            className={`${roboto.className} text-para text-center text-sm underline-offset-8 md:w-6/8 md:underline`}
           >
             Here are some of the MVPs I've helped founders launch. They all had
             innovative ideas and I helped them convert them into reality.
@@ -77,7 +77,7 @@ export const Projects = () => {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <div className="flex w-full flex-col items-center justify-center gap-8 py-4">
+        <div className="flex w-full flex-col items-center justify-center gap-8 overflow-x-hidden overflow-y-hidden py-4">
           {projectList.map((proj, idx) => (
             <ProjectCard key={idx} {...proj} idx={idx} />
           ))}

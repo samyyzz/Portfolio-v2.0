@@ -24,7 +24,7 @@ export const FaqCard = ({ qus, ans }: FAQItem) => {
     >
       <div className="flex items-center justify-between bg-neutral-800 p-5">
         <h1
-          className={`text-lg font-bold hover:text-neutral-200 ${showAns ? `text-neutral-200` : `text-neutral-400`}`}
+          className={`text-md w-7/8 font-bold hover:text-neutral-200 md:text-lg ${showAns ? `text-neutral-200` : `text-neutral-400`}`}
         >
           {qus}
         </h1>
@@ -43,7 +43,7 @@ export const FaqCard = ({ qus, ans }: FAQItem) => {
             transition={{
               duration: 0.3,
             }}
-            className={`${roboto.className} bg-neutral-800 p-5 pt-0 text-neutral-500`}
+            className={`${roboto.className} md:text-md bg-neutral-800 p-5 pt-0 text-sm text-neutral-500`}
           >
             {ans}
           </motion.p>

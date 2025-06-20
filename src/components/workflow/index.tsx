@@ -50,16 +50,15 @@ export const Workflow = () => {
     offset: ["start end", "end start"],
   });
 
-  // const opacityContainer = useTransform(scrollYProgress, [0, 0.3], [0, 50]);
   const scaleContainer = useTransform(scrollYProgress, [0, 0.5], [10, 1]);
   const yContainer = useSpring(
     useTransform(scrollYProgress, [0, 0.1, 0.5], [1100, -100, 0]),
   );
   const xContainer = useTransform(scrollYProgress, [0, 0.5], [-600, 0]);
-  const heightContainer = useTransform(scrollYProgress, [0, 0.5], [280, 70]);
+  const heightContainer = useTransform(scrollYProgress, [0, 0.3], [280, 60]);
   return (
     <Container>
-      <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 overflow-x-hidden overflow-y-hidden pt-10">
+      <div className="mb-10 flex w-full flex-col items-center justify-center gap-4 overflow-x-hidden overflow-y-hidden pt-10 md:mb-20">
         <motion.h1
           ref={workRef}
           style={{
@@ -69,14 +68,14 @@ export const Workflow = () => {
             height: heightContainer,
           }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
-          className="bg-lime-500 px-4 py-2 pt-4 text-center text-sm font-extrabold text-black md:text-5xl"
+          className="text-md bg-lime-500 px-4 py-2 pt-4 text-center font-extrabold text-black md:text-5xl"
         >
           How we
           <span className="bg-white p-2 font-extrabold text-black">WORK</span> ?
         </motion.h1>
       </div>
       <div className="flex items-center justify-center">
-        <div className="grid grid-cols-3 gap-3">
+        <div className="flex grid-cols-3 flex-col gap-3 md:grid">
           <FlowCard
             idx={0}
             Icon={workflow[0].Icon}

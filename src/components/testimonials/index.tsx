@@ -86,7 +86,7 @@ export const Testimonial = () => {
               damping: 10,
               mass: 1,
             }}
-            className={`gradient-title from-neutral-100 to-neutral-500 text-6xl font-extrabold ${localfont.className}`}
+            className={`gradient-title from-neutral-100 to-neutral-500 text-4xl font-extrabold md:text-6xl ${localfont.className}`}
           >
             Trusted by Founders
           </motion.h1>
@@ -96,13 +96,13 @@ export const Testimonial = () => {
             transition={{
               duration: 0.5,
             }}
-            className="text-secondary text-sm font-semibold"
+            className="text-para text-sm font-semibold"
           >
             Hear from clients and collaborators about their experience working
             with us.
           </motion.p>
         </div>
-        <div className="flex mask-x-from-70% mask-x-to-90%">
+        <div className="flex mask-x-from-70% mask-x-to-95% md:mask-x-from-70% md:mask-x-to-90%">
           <Marquee pauseOnHover>
             {testimonials.map((data, idx) => (
               <TestimonialCard key={idx} {...data} />

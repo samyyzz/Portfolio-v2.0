@@ -17,7 +17,7 @@ const localfont = localFont({
 
 export const Intro = ({ imageSrc, name, aboutMe }: IntroTemplate) => {
   return (
-    <motion.div className="h-screen">
+    <motion.div className="md:h-screen">
       <motion.div
         style={{
           backgroundImage: `radial-gradient(circle at 0.5px 0.5px, rgba(6,182,212,0.2) 0.5px, transparent 0)`,
@@ -27,7 +27,7 @@ export const Intro = ({ imageSrc, name, aboutMe }: IntroTemplate) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="flex h-72 flex-col items-center justify-end rounded-t-4xl bg-neutral-800"
+        className="flex h-44 flex-col items-center justify-end rounded-t-4xl bg-neutral-800 md:h-72"
       >
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -39,7 +39,7 @@ export const Intro = ({ imageSrc, name, aboutMe }: IntroTemplate) => {
             damping: 4,
             mass: 1,
           }}
-          className="z-10"
+          className="relative top-30 z-10 scale-60 md:top-0 md:scale-none"
         >
           <Image src={imageSrc} height={400} width={350} alt="Img" />
         </motion.div>
@@ -49,16 +49,16 @@ export const Intro = ({ imageSrc, name, aboutMe }: IntroTemplate) => {
           initial={{ opacity: 0, y: 100, scale: 0 }}
           animate={{ opacity: 1, y: -10, scale: 1.14 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          className={`${localfont.className} z-10 -mt-10 scale-104 bg-gradient-to-b from-neutral-400 to-blue-100 bg-clip-text text-8xl font-extrabold text-transparent capitalize`}
+          className={`${localfont.className} z-10 scale-104 bg-gradient-to-b from-neutral-400 to-blue-100 bg-clip-text text-3xl font-extrabold text-transparent capitalize md:-mt-10 md:text-8xl`}
         >
           {name}
         </motion.h1>
-        <div className="mt-2 mb-20 flex w-full justify-start">
+        <div className="mt-2 mb-20 flex w-full justify-center md:justify-start">
           <motion.h2
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2, ease: "easeInOut" }}
-            className="bg-gradient-to-t from-neutral-200 to-neutral-400 bg-clip-text pl-4 font-mono text-2xl font-light text-transparent"
+            className="w-fit bg-gradient-to-t from-neutral-200 to-neutral-400 bg-clip-text font-mono text-2xl font-light text-transparent md:pl-14"
           >
             <AboutMe roles={aboutMe} />
           </motion.h2>

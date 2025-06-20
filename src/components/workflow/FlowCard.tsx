@@ -32,11 +32,13 @@ export const FlowCard = ({
       }}
       className={`${className} flex h-56 flex-col items-center justify-start gap-4 rounded-2xl border border-neutral-800 p-4 transition duration-300 hover:border hover:border-neutral-700 hover:shadow`}
     >
-      <div className="flex size-16 items-center justify-center rounded-full bg-lime-300">
+      <div className="flex size-8 items-center justify-center rounded-full bg-lime-300 p-2 md:size-16 md:p-0">
         {Icon}
       </div>
-      <h1 className="text-secondary text-lg font-bold">{title}</h1>
-      <p className={`${roboto.className} text-center text-neutral-500`}>
+      <h1 className="text-secondary text-md font-bold md:text-lg">{title}</h1>
+      <p
+        className={`${roboto.className} md:text-md text-center text-sm text-neutral-500`}
+      >
         {description}
       </p>
     </motion.div>

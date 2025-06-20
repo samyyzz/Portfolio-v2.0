@@ -53,37 +53,45 @@ export const Offerings = () => {
     <Container>
       <motion.div
         id="offerings"
-        className="relative flex flex-col items-center justify-start gap-6 rounded-3xl bg-gradient-to-b from-lime-400 to-lime-300 pt-14 pb-40 inset-shadow-sm inset-shadow-lime-800"
+        className="relative flex flex-col items-center justify-start gap-6 rounded-3xl bg-gradient-to-b from-lime-400 to-lime-300 px-2 py-6 inset-shadow-sm inset-shadow-lime-800 md:pt-14 md:pb-40"
       >
-        <h1 className="text-center text-5xl font-medium">
-          <span className="font-extrabold"> 3 years </span>
-          of experience in{" "}
+        <h1 className="text-center text-3xl font-medium md:text-5xl">
+          <span className="block pr-2 font-extrabold md:inline-flex">
+            {" "}
+            3 years
+          </span>
+          <span className="block pr-2 text-sm md:inline-flex md:text-4xl">
+            of experience in
+          </span>
           <span className="font-semibold underline underline-offset-8">
-            3-weeks
+            3 weeks
           </span>
         </h1>
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, filter: "blur(10px)" }}
           whileInView={{ opacity: 100, filter: "blur(0px)", scale: [1.1, 1] }}
           transition={{ duration: 0.5 }}
-          className={`${roboto.className} w-3/6 text-center font-semibold`}
+          className={`${roboto.className} w-5/6 text-center font-semibold md:w-3/6`}
         >
-          <span className="text-lime-900">
-            *Stop waiting—start validating. Your idea, our execution.*
-          </span>
+          <p className="bg-white text-lime-900">
+            Stop waiting — start validating.
+            <span className="block">Your idea, our execution.</span>
+          </p>
           <br />
-          <span className="font-medium">
-            Automate workflows, predict trends, and personalize experiences.
-          </span>
-          <span className="font-light">
-            We automate your ops so you never lose a sale -{" "}
-          </span>
+          {/* <div className="hidden">
+            <span className="font-medium">
+              Automate workflows, predict trends, and personalize experiences.
+            </span>
+            <span className="font-light">
+              We automate your ops so you never lose a sale -{" "}
+            </span>
+          </div> */}
           <span className="font-semibold">
             We handle MVP build, cloud ops, and growth content. You handle
             champagne.
           </span>
-        </motion.p>
-        <div className="grid grid-cols-3 gap-4 rounded-2xl p-4">
+        </motion.div>
+        <div className="flex flex-col gap-4 overflow-x-hidden rounded-2xl p-4 md:grid md:grid-cols-3">
           <motion.div
             initial={{ y: 100, x: 200 }}
             whileInView={{ y: 0, x: 0 }}
@@ -176,7 +184,7 @@ export const Offerings = () => {
             />
           </motion.div>
         </div>
-        <div className="absolute top-40 opacity-30 blur-xs">
+        <div className="absolute top-40 hidden opacity-30 blur-xs md:inline">
           <Image src={"/sameer.png"} width={300} height={250} alt="Img" />
         </div>
       </motion.div>

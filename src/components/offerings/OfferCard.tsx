@@ -1,8 +1,8 @@
-import { AnimationProps } from "motion/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 export interface CardList {
-  idx?:number;
+  idx?: number;
   iconSrc: string;
   title: string;
   description: string;
@@ -19,9 +19,11 @@ export const OfferCard = ({
   onClick,
 }: CardList) => {
   return (
-    <div
+    <motion.div
+    whileHover={{scale:1.1 }}
+    transition={{duration:0.3, ease:"easeInOut"}}
       onClick={onClick}
-      className="bg-secondary grid cursor-pointer grid-cols-3 rounded-t-lg p-4 shadow-lg md:min-w-80"
+      className="bg-secondary grid cursor-pointer grid-cols-3 gap-4 rounded-sm p-2 shadow-lg md:min-w-80 md:rounded-t-lg md:p-4"
     >
       <Image
         src={iconSrc}
@@ -31,11 +33,11 @@ export const OfferCard = ({
         className="col-span-1"
       />
       <div className="col-span-2 col-start-2 grid grid-rows-2 place-content-start font-bold">
-        <h1 className="text-md font-mono font-extrabold md:text-xl">{title}</h1>
+        <h1 className="font-mono text-sm font-extrabold md:text-xl">{title}</h1>
         <h2 className="flex gap-2 tracking-wide text-lime-600 text-shadow-2xs text-shadow-lime-500">
           {description} <span className="animate-pulse">{icon}</span>
         </h2>
       </div>
-    </div>
+    </motion.div>
   );
 };

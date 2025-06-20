@@ -6,7 +6,7 @@ export const AboutMe = ({ roles }: { roles: String[] }) => {
       {roles.map((role, idx) => (
         <h2
           key={idx}
-          className="animate-pulse bg-gradient-to-t from-neutral-200 to-neutral-400 bg-clip-text pl-4 font-mono text-lg font-light text-transparent"
+          className="animate-pulse bg-gradient-to-t from-neutral-200 to-neutral-400 bg-clip-text font-mono text-sm font-light text-transparent md:pl-4 md:text-lg"
         >
           {role}
         </h2>
