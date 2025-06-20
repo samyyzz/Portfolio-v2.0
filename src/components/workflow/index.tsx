@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import Container from "../Container";
 import { FlowCard, WorkFlow } from "./FlowCard";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import {
   CalendarIcon,
   NotebookIcon,
@@ -43,42 +44,69 @@ export const workflow: WorkFlow[] = [
 ];
 
 export const Workflow = () => {
+  const workRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: workRef,
+    offset: ["start end", "end start"],
+  });
+
+  // const opacityContainer = useTransform(scrollYProgress, [0, 0.3], [0, 50]);
+  const scaleContainer = useTransform(scrollYProgress, [0, 0.5], [10, 1]);
+  const yContainer = useSpring(
+    useTransform(scrollYProgress, [0, 0.1, 0.5], [1100, -100, 0]),
+  );
+  const xContainer = useTransform(scrollYProgress, [0, 0.5], [-600, 0]);
+  const heightContainer = useTransform(scrollYProgress, [0, 0.5], [280, 70]);
   return (
     <Container>
-      <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 pt-10">
-        <h1 className="bg-lime-500 px-4 py-2 pt-4 text-center text-sm font-extrabold text-black md:text-5xl">
+      <div className="mb-20 flex w-full flex-col items-center justify-center gap-4 overflow-x-hidden overflow-y-hidden pt-10">
+        <motion.h1
+          ref={workRef}
+          style={{
+            scale: scaleContainer,
+            y: yContainer,
+            x: xContainer,
+            height: heightContainer,
+          }}
+          transition={{ ease: "easeInOut", duration: 0.3 }}
+          className="bg-lime-500 px-4 py-2 pt-4 text-center text-sm font-extrabold text-black md:text-5xl"
+        >
           How we
-          {/* <span className="gradient-title from-blue-500 to-blue-700"> */}
           <span className="bg-white p-2 font-extrabold text-black">WORK</span> ?
-        </h1>
+        </motion.h1>
       </div>
       <div className="flex items-center justify-center">
         <div className="grid grid-cols-3 gap-3">
           <FlowCard
+            idx={0}
             Icon={workflow[0].Icon}
             title={workflow[0].title}
             description={workflow[0].description}
             className="col-span-1"
           />
           <FlowCard
+            idx={1}
             Icon={workflow[1].Icon}
             title={workflow[1].title}
             description={workflow[1].description}
             className="col-span-1"
           />
           <FlowCard
+            idx={2}
             Icon={workflow[2].Icon}
             title={workflow[2].title}
             description={workflow[2].description}
             className="col-span-1"
           />
           <FlowCard
+            idx={3}
             Icon={workflow[3].Icon}
             title={workflow[3].title}
             description={workflow[3].description}
             className="col-span-2"
           />
           <FlowCard
+            idx={4}
             Icon={workflow[4].Icon}
             title={workflow[4].title}
             description={workflow[4].description}

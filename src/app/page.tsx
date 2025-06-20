@@ -9,15 +9,13 @@ import { Offerings } from "@/components/offerings";
 import { Projects } from "@/components/projects";
 import { Testimonial } from "@/components/testimonials";
 import { Workflow } from "@/components/workflow";
-import Image from "next/image";
 
 const rolesList = ["Designer /", "Developer /", "Editor"];
 
 export default function Home() {
   return (
     <div>
-      {/* <Container className="flex min-h-screen flex-col gap-20 p-4 md:pt-20 md:pb-10"> */}
-      <Container className="flex min-h-screen flex-col gap-20 p-4 ">
+      <Container className="flex min-h-screen flex-col gap-20 p-4">
         <Intro
           name="Sameer Ranjan Singh"
           aboutMe={rolesList}
@@ -35,11 +33,3 @@ export default function Home() {
     </div>
   );
 }
-
-{/* <Image
-  src={"/banner.png"}
-  width={1250}
-  height={100}
-  alt="Banner"
-  className="rounded-4xl"
-/>; */}

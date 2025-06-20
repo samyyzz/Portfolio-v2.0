@@ -71,7 +71,7 @@ export const Navbar = () => {
               {hovered === idx && (
                 <motion.span
                   layoutId="hovered-span"
-                  className="bg-secondary absolute inset-0 h-full w-full rounded-md"
+                  className="bg-lime-400 absolute inset-0 h-full w-full rounded-full"
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 />
               )}
