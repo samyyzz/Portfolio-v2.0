@@ -21,9 +21,6 @@ export const Navbar = () => {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState<boolean>(false);
 
-  // const y = useTransform(scrollY, [0, 100], ["0,10"]);
-  // const width = useTransform(scrollY, [0, 100], ["50%,10"]);
-  // const opacity = useTransform(scrollY, [0, 100], []);
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 20) {
       setScrolled(true);
@@ -49,9 +46,10 @@ export const Navbar = () => {
         }}
         className={`fixed inset-x-0 top-0 z-50 mx-auto flex max-w-7xl items-center justify-between ${scrolled && "bg-neutral-800"} px-4 py-2`}
       >
-        <div className={`${!scrolled && `rounded-lg bg-neutral-700 p-2`}`}>
+        <div
+          className={`${!scrolled && `rounded-lg bg-neutral-700 p-2`} flex justify-between md:flex-none`}
+        >
           <Image
-            // src={"/samx-gtihub.png.webp"}
             src={"/picofme (2).png"}
             width={100}
             height={100}
@@ -59,19 +57,24 @@ export const Navbar = () => {
             className="size-7 rounded-full object-bottom"
           />
         </div>
-        <div className="flex items-center justify-center">
+        <Link href="#footer">
+          <button className="rounded-full bg-lime-400 px-2 py-1 text-sm text-lime-800 md:hidden">
+            Contact Us
+          </button>
+        </Link>
+        <div className="hidden md:inline-block">
           {navItems.map((link, idx) => (
             <Link
               href={"#" + link.href}
               key={link.title}
               onMouseEnter={() => setHovered(idx)}
               onMouseLeave={() => setHovered(null)}
-              className="relative w-24 px-2 py-1 text-sm"
+              className="relative px-2 py-1 text-sm"
             >
               {hovered === idx && (
                 <motion.span
                   layoutId="hovered-span"
-                  className="bg-lime-400 absolute inset-0 h-full w-full rounded-full"
+                  className="absolute inset-0 h-full w-full rounded-full bg-lime-400"
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 />
               )}

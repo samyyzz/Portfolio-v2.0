@@ -77,7 +77,7 @@ export const Testimonial = () => {
       <div className="flex flex-col gap-10">
         <div className="flex flex-col items-center justify-center gap-3">
           <motion.h1
-            initial={{ x: -500, opacity: 0 }}
+            initial={{ x: -200, opacity: 0 }}
             whileInView={{ x: 0, opacity: 100 }}
             transition={{
               duration: 0.3,

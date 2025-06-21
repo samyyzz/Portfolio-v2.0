@@ -26,7 +26,6 @@ export default function Home() {
         <Testimonial />
         <Projects />
         <Workflow />
-        {/* <Price/> */}
         <FAQ />
       </Container>
       <Footer />
